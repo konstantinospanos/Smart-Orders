@@ -38,7 +38,7 @@ class main(BoxLayout):
     def customer(self,firstname,lastname,phone,mobile,email):
         payload = {'firstname':firstname,'lastname':lastname,'phone':phone,'mobile':mobile,'email':email}
         params = urllib.urlencode(payload)
-        req = UrlRequest('https://192.168.2.10/ordering/customersapp/customers/add_customer/'+self.apikey,
+        req = UrlRequest('https://localhost/ordering/customersapp/customers/add_customer/'+self.apikey,
                          req_body=params,on_success=self.customer_success,verify=False)
 
 class customer(App):
