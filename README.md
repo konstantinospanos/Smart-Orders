@@ -13,4 +13,4 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
 
 # Requirement
   
-  python = 2.7
+  - python = 2.7
