@@ -26,7 +26,7 @@ Registration Customer
 Create user
 
 
-https://user-images.githubusercontent.com/80073685/110107773-036d1d80-7db4-11eb-966f-36eae96ed2e0.mp4
+[![Watch the video](https://user-images.githubusercontent.com/80073685/110107773-036d1d80-7db4-11eb-966f-36eae96ed2e0.mp4)
 
 
 
