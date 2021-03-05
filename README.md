@@ -24,7 +24,8 @@ Registration Customer
 
 
 
-https://user-images.githubusercontent.com/80073685/110105301-e4b95780-7db0-11eb-9b72-fac88aefb4b7.mp4
+
+![50hfru](https://user-images.githubusercontent.com/80073685/110105301-e4b95780-7db0-11eb-9b72-fac88aefb4b7.gif)
 
 
 
