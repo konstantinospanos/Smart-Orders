@@ -19,7 +19,5 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
 
 # Screenshot
 
-
-
-<a href="https://imgflip.com/gif/50hfru"><img src="https://imgflip.com/embed/50hfru"> title='customer'/></a>
+![50hfru](https://user-images.githubusercontent.com/80073685/110101934-d79a6980-7dac-11eb-9c91-0559fd976852.gif)
 
