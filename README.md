@@ -16,10 +16,7 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
   `python 2.7` `bcryp` `bcryptor 0.23.1` `certifi` `Cython 0.23.1`
   `Kivy 1.9.1` `urllib3` `requests` `pymongo 3.11.3`
   `py-bcrypt` `setuptools` `ptyprocess`
+
+# Screenshot
+  <div style="width:360px;max-width:100%;"><div style="height:0;padding-bottom:82.78%;position:relative;"><iframe width="360" height="298" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/50hfru"></iframe></div><p><a href="https://imgflip.com/gif/50hfru">via Imgflip</a></p></div>
   
-  # screenshot
-  
-  Create Customer
-  
-https://github.com/konstantinospanos/Smart-Orders-in-Restaurant-Coffee/pull/1#issue-585471396
- 
