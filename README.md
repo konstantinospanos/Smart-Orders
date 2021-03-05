@@ -13,6 +13,8 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
 
 # Requirement
   
-  `python = 2.7` `bcryp` `bcryptor` `certifi` `Cython`
-  `Kivy = 1.9.1` `urllib3` `requests` `pymongo = 3.11.3`
-  `py-bcrypt`
+  `python 2.7` `bcryp` `bcryptor 0.23.1` `certifi` `Cython 0.23.1`
+  `Kivy 1.9.1` `urllib3` `requests` `pymongo 3.11.3`
+  `py-bcrypt` `setuptools` `ptyprocess`
+  
+ 
