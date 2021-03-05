@@ -17,4 +17,12 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
   `Kivy 1.9.1` `urllib3` `requests` `pymongo 3.11.3`
   `py-bcrypt` `setuptools` `ptyprocess`
   
+  # screenshot
+  
+  Create Customer
+  
+https://user-images.githubusercontent.com/80073685/110097274-82a82480-7da7-11eb-8eaf-e9e0b16b308f.mp4
+
+
+  
  
