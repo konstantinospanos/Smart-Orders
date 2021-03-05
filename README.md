@@ -25,9 +25,13 @@ Registration Customer
 
 Create user
 
+![create-user_0ZDnH2NI_TtCk](https://user-images.githubusercontent.com/80073685/110113063-3b2b9380-7dbb-11eb-8f96-20901b6a0aff.gif)
 
 
-![50hfru](https://www.youtube.com/watch?v=Rcu0c0l1Bt8)
+
+
+
+
 
 
 
