@@ -26,9 +26,7 @@ Registration Customer
 Create user
 
 
-![50hfru](https://github.com/konstantinospanos/Smart-Orders-in-Restaurant-Coffee/issues/2#issue-822992035)
-
-
+https://www.youtube.com/watch?v=Rcu0c0l1Bt8
 
 
 
