@@ -25,8 +25,8 @@ Registration Customer
 
 Create user
 
-https://user-images.githubusercontent.com/80073685/110108629-192f1280-7db5-11eb-9d2f-560b34b9834f.mp4
 
+![50hfru](https://github.com/konstantinospanos/Smart-Orders-in-Restaurant-Coffee/issues/2#issue-822992035)
 
 
 
