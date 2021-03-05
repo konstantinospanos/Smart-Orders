@@ -19,9 +19,11 @@ The PyMongo distribution contains tools for interacting with MongoDB database fr
   
   # screenshot
   
-  Create Customer
+
+
+  
+  
   
 
-  ![Alt text](https://user-images.githubusercontent.com/80073685/110097274-82a82480-7da7-11eb-8eaf-e9e0b16b308f.mp4?raw=true "Optional Title")
 
  
