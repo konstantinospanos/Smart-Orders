@@ -1,0 +1,125 @@
+# -*- coding: utf-8 -*-
+from encryption import encrypt_pass
+from sendemail import evidencemail
+from sendpassword import semail
+from bson import ObjectId
+from bson import json_util
+from datetime import timedelta
+from datetime import date
+import os, random, string
+import datetime
+import uuid
+import json
+
+
+def login():
+    if request.args[0]=='e54d9fc1-df90-466b-856e-84b075bb296d-02f6d436-ba00-4601-a374-aae35a562213':
+        import bcrypt
+        if request.vars.has_key('username') and request.vars.has_key('password'):
+            user = db.user.find_one({"username":request.vars.username})
+            if user and user['password'] == bcrypt.hashpw(str(request.vars.password), str(user['password'])):
+                user[u'_id'] = str(user[u'_id'])
+                customer = db.customers.find_one({"_id":ObjectId(user[u'customer_id']) })
+                customer[u'_id'] = str(customer[u'_id'])
+                
+                all_users = []
+                for usr in db.user.find({'customer_id':customer[u'_id']}):
+                    userlsdict = {'firstname':str(usr['firstname']),'lastname': str(usr['lastname']),'username': str(usr['username']),'role': str(usr['role']), 'email':str(usr['email']),'user_id':str(usr[u'_id'])}
+                    all_users.append(userlsdict)
+
+                return response.json(dict(userdict = user, customerdict = customer,allusers = all_users,resp='Successful Connection'))
+
+            else:
+                return response.json(dict(resp = 'Incorrect Connection'))
+
+def users():
+    user = db.user.find_one({'api_key':request.args[1]})
+    if user:
+        user_id = str(user[u'_id'])
+        if request.args[0]=='createuser':
+            if request.vars.has_key('username'):
+                new_user = request.vars.username
+                usernames = db.user.distinct('username')
+                if new_user in usernames:
+                        return response.json(dict(resp='The username ' + new_user + ' already used. Please select another username.'))
+                else:
+                    length = 6
+                    chars = string.ascii_letters + string.digits + '!@#$%^&*'
+                    random.seed = (os.urandom(1024))
+                    create_password =  ''.join(random.choice(chars) for i in range(length))
+                    customer = db.customers.find_one({'_id':ObjectId(user['customer_id'])})
+                    customer[u'_id'] = str(customer[u'_id']) 
+                    user_email = request.vars.email
+
+                    api_key=str(uuid.uuid4())+'-'+str(uuid.uuid4())
+                    userid = db.user.insert_one({"username":request.vars.username,"password":encrypt_pass(passwd=create_password), "firstname":request.vars.firstname,"lastname":request.vars.lastname,"api_key":api_key,"email":user_email, "role":request.vars.role,"customer_id":user['customer_id']})
+                    semail(sender = 'spanoskostas92@gmail.com', receiver = user_email,  subject = 'Login Details', username = request.vars.username , password = create_password)
+
+                    all_users = []
+                    for usr in db.user.find({'customer_id':customer[u'_id']}):
+                        userdict = {'firstname':str(usr['firstname']),'lastname': str(usr['lastname']),'username': str(usr['username']),'role': str(usr['role']), 'email':str(usr['email']), 'user_id':str(usr[u'_id'])}
+                        all_users.append(userdict)
+
+                    if userid:
+                         return response.json(dict(resp = u'Successful Registration User.Username and Password send the e-mail',allusers = all_users))
+
+        if request.args[0]=='deleteuser':
+            if request.vars.has_key('userid'):
+                db.user.delete_one({'_id':ObjectId(request.vars.userid)})
+                all_users = []
+                for usr in db.user.find({'customer_id':user['customer_id']}):
+                    userdict = {'firstname':str(usr['firstname']),'lastname': str(usr['lastname']),'username': str(usr['username']),'role': str(usr['role']), 'email':str(usr['email']), 'user_id':str(usr[u'_id'])}
+                    all_users.append(userdict)
+                return response.json(dict(resp = 'Delete User',allusers = all_users))
+
+        if request.args[0]=='changepass':
+            if request.vars.has_key('usereditid'):
+                new_user = request.vars.username
+                usernames = db.user.distinct('username')
+
+                if new_user in usernames:
+                        return response.json(dict(resp='Please select another username.'))
+                else:
+                    length = 6
+                    chars = string.ascii_letters + string.digits + '!@#$%^&*'
+                    random.seed = (os.urandom(1024))
+                    create_password =  ''.join(random.choice(chars) for i in range(length))
+
+                    db.user.update_one({'_id':ObjectId(request.vars.usereditid)},{'$set':{"username":request.vars.username,"password":encrypt_pass(passwd=create_password),
+                                                                                           "firstname":request.vars.firstname,"lastname":request.vars.lastname,"email":request.vars.email,"role":request.vars.role}}, upsert=False)
+                    semail(sender = 'spanoskostas92@gmail.com', receiver = request.vars.email,  subject = 'Login details', username = request.vars.username, password = create_password)
+
+                    all_users = []
+                    for usr in db.user.find({'customer_id':user['customer_id']}):
+                        userdict = {'firstname':str(usr['firstname']),'lastname': str(usr['lastname']),'role': str(usr['role']), 'email':str(usr['email']), 'user_id':str(usr[u'_id'])}
+                        all_users.append(userdict)
+                    return response.json(dict(resp = 'The Password send the e-mail.',allusers = all_users))
+
+        if request.args[0]=='edituser':
+            if request.vars.has_key('usereditid'):
+                db.user.update_one({'_id':ObjectId(request.vars.usereditid)},{'$set':{"firstname":request.vars.firstname,"lastname":request.vars.lastname,"username":request.vars.username,"email":request.vars.email,"role":request.vars.role}}, upsert=False)
+
+                all_users = []
+                for usr in db.user.find({'customer_id':user['customer_id']}):
+                    userdict = {'firstname':str(usr['firstname']),'lastname': str(usr['lastname']),'username': str(usr['username']),'role': str(usr['role']), 'email':str(usr['email']), 'user_id':str(usr[u'_id'])}
+                    all_users.append(userdict)
+                return response.json(dict(resp = 'Successful modification',allusers = all_users))
+
+def view_order():
+    if request.vars.has_key('customerid'):
+        order_list = []
+        customerid = request.vars.customerid
+        for element in db.order.find({'customer_id':customerid}):
+            order_list.append({'table':element['table'],'status':element['status'],'total':element['total']})
+    return response.json(dict(orderlist=order_list))
+
+def account():
+    user = db.user.find_one({'api_key':request.args[0]})
+    if user:
+        if request.vars.has_key('customerid'):
+            check_order = db.order.find_one({"$and":[{'customer_id':str(user[u'customer_id'])},{"status": 'pay'}]})
+            if check_order:
+                for item in db.order.aggregate([{"$match":{'status':'pay'}},{"$group":{'_id':"$cust_id",'total':{"$sum":"$total"}}}]):
+                    accounts = item['total']
+                return response.json(dict(statuspay=accounts))
+            return response.json(dict(status='There is no pay order'))
