@@ -21,7 +21,7 @@ class main(BoxLayout):
     button_front_pos_hint = ObjectProperty({'x': .76, 'y': .05})
     def __init__(self,**kwargs):
         super(main, self).__init__(**kwargs)
-        self.apikey = '719807bc-e521-4475-b781-55811ebef9f1-d793500d-0829-409c-b33a-e3ad2856d000'
+        self.apikey = 'apikey'
         
     def customer_success(self, req, result):
         print result
