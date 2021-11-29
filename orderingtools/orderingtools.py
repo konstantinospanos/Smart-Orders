@@ -280,7 +280,7 @@ class OrderingApp(App):
     
     def __init__(self, *args, **kwargs):
         super(OrderingApp, self).__init__(*args, **kwargs)
-        self.apikeydefault = '719807bc-e521-4475-b781-55811ebef9f1-d793500d-0829-409c-b33a-e3ad2856d000'
+        self.apikeydefault = 'api_key'
 
     def error_request(self, req, error):
         self.stingmessage = str(error)
