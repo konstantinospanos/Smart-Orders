@@ -1,5 +1,9 @@
 # Editor.md
 
+Install web2py
+
+Upload application web2py.app.ordering.w2p
+
 Open terminal 
 
 MongoDB Create Administrator User
