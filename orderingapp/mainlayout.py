@@ -55,7 +55,7 @@ class MainLayout(BoxLayout):
             #from android import activity
             self.PythonActivity = autoclass('org.kivy.android.PythonActivity')
 
-        self.apikeydefault = '719807bc-e521-4475-b781-55811ebef9f1-d793500d-0829-409c-b33a-e3ad2856d000'
+        self.apikeydefault = 'apikey'
         self.login_screen_setup()       #2
         self.menu_screen_setup()        #3
         self.profil_screen_setup()      #4
