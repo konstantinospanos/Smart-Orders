@@ -1,1 +1,1 @@
-https://192.168.2.15/ordering/default/
+https://api_adrress/ordering/default/
